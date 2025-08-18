@@ -1,13 +1,14 @@
 'use client';
 import React, { useRef } from 'react'
 import Image from "next/image";
-import { IMAGE_PATHS } from "@/constants";
+import {PLANES_DATA } from "@/constants";
 import gsap from "gsap";
 
 function FloatingGalleryAnimation() {
   const plane1 = useRef(null);
   const plane2 = useRef(null);
   const plane3 = useRef(null);
+  const planes = [plane1, plane2, plane3];
 
   const speed = 0.1; // Controls the speed of the mouse movement. Adjust as needed.
   let xForce = 0;
@@ -56,20 +57,13 @@ function FloatingGalleryAnimation() {
 
   return (
     <main className="h-screen w-screen overflow-hidden relative" onMouseMove={manageMouseMove}>
-      <div ref={plane1} className="plane">
-        <Image src={IMAGE_PATHS.image1} alt="image" width={200} height={200} />
-        <Image src={IMAGE_PATHS.image2} alt="image" width={200} height={200} />
-        <Image src={IMAGE_PATHS.image3} alt="image" width={200} height={200} />
-      </div>
-      <div ref={plane2} className="plane">
-        <Image src={IMAGE_PATHS.image4} alt="image" width={200} height={200} />
-        <Image src={IMAGE_PATHS.image6} alt="image" width={200} height={200} />
-        <Image src={IMAGE_PATHS.image8} alt="image" width={200} height={200} />
-      </div>
-      <div ref={plane3} className="plane">
-        <Image src={IMAGE_PATHS.image5} alt="image" width={200} height={200} />
-        <Image src={IMAGE_PATHS.image7} alt="image" width={200} height={200} />
-      </div>
+      {PLANES_DATA.map((images, planeIndex) => (
+        <div key={planeIndex} ref={planes[planeIndex]} className="plane">
+          {images.map((imagePath, index) => (
+            <Image src={imagePath} alt={'image'} width={200} height={200} key={index} />
+          ))}
+        </div>
+      ))}
     </main>
   )
 }

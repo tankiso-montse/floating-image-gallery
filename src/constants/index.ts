@@ -8,3 +8,9 @@ export const IMAGE_PATHS = {
   image7: '/image-7.jpeg',
   image8: '/image-8.jpeg',
 }
+
+export const PLANES_DATA = [
+  [IMAGE_PATHS.image1, IMAGE_PATHS.image2, IMAGE_PATHS.image3],
+  [IMAGE_PATHS.image4, IMAGE_PATHS.image6, IMAGE_PATHS.image8],
+  [IMAGE_PATHS.image5, IMAGE_PATHS.image7],
+];
