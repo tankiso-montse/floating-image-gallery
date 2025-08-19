@@ -64,6 +64,9 @@ function FloatingGalleryAnimation() {
           ))}
         </div>
       ))}
+      <div className='absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center'>
+        <h1 className='text-4xl font-normal text-center m-0'>Floating Images Gallery </h1>
+      </div>
     </main>
   )
 }
