@@ -27,8 +27,8 @@ body {
 
 img {
   position: absolute;
+  opacity: 0;
 }
-
 
 .plane {
   position: absolute;

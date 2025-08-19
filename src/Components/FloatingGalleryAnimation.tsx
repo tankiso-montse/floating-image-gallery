@@ -3,12 +3,18 @@ import React, { useRef } from 'react'
 import Image from "next/image";
 import {PLANES_DATA } from "@/constants";
 import gsap from "gsap";
+import { useGSAP } from '@gsap/react';
 
 function FloatingGalleryAnimation() {
   const plane1 = useRef(null);
   const plane2 = useRef(null);
   const plane3 = useRef(null);
   const planes = [plane1, plane2, plane3];
+
+  useGSAP(() => {
+    gsap.fromTo(".headline", { opacity: 0 }, { opacity: 1, duration: 1, ease: "power1.inOut" });
+    gsap.fromTo(".image", { opacity: 0 }, { opacity: 1, duration: 1, stagger: 0.2, ease: "power1.inOut" });
+  })
 
   const speed = 0.1; // Controls the speed of the mouse movement. Adjust as needed.
   let xForce = 0;
@@ -60,12 +66,12 @@ function FloatingGalleryAnimation() {
       {PLANES_DATA.map((images, planeIndex) => (
         <div key={planeIndex} ref={planes[planeIndex]} className="plane">
           {images.map((imagePath, index) => (
-            <Image src={imagePath} alt={'image'} width={200} height={200} key={index} />
+            <Image src={imagePath} alt={'image'} width={200} height={200} key={index} className='image' />
           ))}
         </div>
       ))}
-      <div className='absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center'>
-        <h1 className='text-4xl font-normal text-center m-0'>Floating Images Gallery </h1>
+      <div className='text-wrapper absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center'>
+        <h1 className='headline opacity-0 text-4xl font-normal text-center m-0'>Floating Images Gallery </h1>
       </div>
     </main>
   )
