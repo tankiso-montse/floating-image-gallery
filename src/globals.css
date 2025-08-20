@@ -27,8 +27,8 @@ body {
 
 img {
   position: absolute;
+  opacity: 0;
 }
-
 
 .plane {
   position: absolute;
@@ -44,7 +44,7 @@ img {
 
     img {
       &:nth-of-type(1) {
-        left: 90%;
+        left: 80%;
         top: 70%;
       }
 
